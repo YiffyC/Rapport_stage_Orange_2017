@@ -1,7 +1,7 @@
 \chapter{Mon stage}
 \label{sec:unchapitre}
 
-Lorsque j'ai répondu à l'offre de stage, il avait initialement prévu que je produise une newsletter ainsi que trois vidéos sur trois APIs différentes qui sont :
+Lorsque j'ai répondu à l'offre de stage, il été avait initialement prévu que je produise une newsletter ainsi que trois vidéos sur trois APIs différentes qui sont :
 
 \begin{itemize}
     \item Gat'Ape/Okapi
@@ -21,10 +21,12 @@ Les vidéos traitant des APIs se devaient d'être vulgarisées et simple à comp
 
 En revanche, l'approche pour les 3 autres vidéos est totalement différente, elles s'adressent à un public ciblé et ont principalement un but promotionnel. Deux de ces vidéos ont été réalisées pour un événement particulier. \\
 
-Dans les points suivants, nous allons développer le contexte et la production de chaque vidéo.
+Avant de développer développer le contexte et la production de chaque vidéo, je vais d'abord présenter le programme PnS.com et ses différents composants. 
+
+\section{Présentattion générale de l'écosystème PnS.com}
 
 
-\section{Gat'Ape/Okapi}
+\section{Vidéo sur Gat'Ape/Okapi}
 
 \subsection{Contexte}
 Gat'ape/Okapi est une API faisant partie de l'écosystème PnS.com qui permet d'exposer, de s'autentifier et de sécuriser les APIs de cet écosystème. Gat'ape et Okapi ont deux fonctions bien distintes.\\
@@ -34,7 +36,7 @@ Okapi est le système d'authentification qui va permettre la connexion aux autre
 Gat'ape quant à elle est la passerelle qui va permettre d'exposer les APIs, c'est à dire, des les rendre visible à d'autres utilisateurs pour qu'ils puissent s'y connecter. Gat'ape va pouvoir offir un conrôle d'accès et un contrôle de traffic permettant de réguler le flux des utilisateurs. Gat'ape est également responsable  de l'authentification et de la sécutité lors de la consommation par Okapi. En plus de cela, gat'ape est également scalable, c'est à dire qu'elle va pouvoir maintenir son activité et sa performance même lors d'une forte demande.\\
 
 Dans les faits la connexion grâce à Gat'ape/okapi se passe comme suit : 
-L'application qui vient se connecter possède une clé secrète. Cette clé secrète est envoyée à Okapi. Lors du traitement, Okapi va renvoyer un jeton d'authentification unique au consommateur ainsi qu'un digest. Ceci est la phase d'authentification.  Ce digest est ensuite envoyé du consommateur vers Gat'ape. Si le digest est valide, le consommateur va envoyer le jeton précédemment obtenu vers l'API à laquelle il souhaitait se connecter. L'API va à son tour vérifier le token puis le renvoyer ainsi que les informations demandées par le consommateur. Ces informations luis seront transmises via Gat'ape. Si une de ces vérifications de token échoue, le protocole recommence un envoi de token. L'opération peut ainsi être réitérée un certain nombre de fois sans avoir à se ré authentiier. Cette durée de vie (TTL) est paramétrable.
+L'application qui vient se connecter possède une clé secrète. Cette clé secrète est envoyée à Okapi. Lors du traitement, Okapi va renvoyer un jeton d'authentification unique au consommateur ainsi qu'un digest. Ceci est la phase d'authentification.  Ce digest est ensuite envoyé du consommateur vers Gat'ape. Si le digest est valide, le consommateur va envoyer le jeton précédemment obtenu vers l'API à laquelle il souhaitait se connecter. L'API va à son tour vérifier le token puis le renvoyer ainsi que les informations demandées par le consommateur. Ces informations luis seront transmises via Gat'ape. Si une de ces vérifications de token échoue, le protocole recommence un envoi de token. L'opération peut ainsi être réitérée un certain nombre de fois sans avoir à se ré authentifier. Cette durée de vie (TTL) est paramétrable.
 
 \begin{figure}[htp]
   \centering
@@ -46,10 +48,13 @@ L'application qui vient se connecter possède une clé secrète. Cette clé secr
 
 
 \subsection{Production}
+Avant de commencer la production à proprement parlé j'ai tout d'abord du lire la documentation relative à cette API pour en comprendre l'utilité et le fonctionnement. Une fois que la fonction et le fonctionnement de cette API m'était plus clair, j'ai pris rendez vous avec le responsable solution de cette API. Nous avons fait une réunion dans laquelle je lui ai demandé les points qu'il voulait mettre en avant grâce à la vidéo et les principales innovations qu'apportait Gat'ape/okapi par rapport à l'ancienne solution. Une fois d'accord sur les points à aborder je me suis mis à produire un script, et un storyboard qui sont respectivement le texte de la vidéo et les images et animations clefs de celle ci. Une fois le script et le storyboard finalisé, j'ai de nouveau rencontré le responsable de Gat'ape/Okapi pour les lui proposer. Une fois ces documents validés, j'ai pu me lancer dans la production à proprement parler. J'ai choisi de créer un thème sobre et direct pour que les spectateurs ne se perdent pas dans les détails. Un fond blanc et les illustrations trouvées sur le site de la marque. De cette manière j'étais sûr de respecter les conditions de la charte graphique, à savoir, au mois 20\% de couleur orange sur les illustrations ainsi que les couleurs et la police officielle.\\
+
+Au lancement de la vidéo, les logos de Gat'ape et Okapi arrivent depuis chaque côté de l'écran, présentant ainsi les deux APIs. La partie suivante de la vidéo explique brièvement la fonction générale de Gat'ape/Okapi. Les APIs exposés au travers de Gat'ape apparaissent en premier, pour symboliser le fait qu'elles sont déjà présentes et visibles, puis les consommateurs font leur apparition et ces derniers sont reliés aux APIs via des flèches en passant par le duo Gat'ape/Okapi. Vient ensuite l'explication de l'identification. Le nom du protocole d'authentification, Okapi, apparaît et est décomposé pour expliquer son acronyme. Dans un premier temps le protocole Oauth2 est expliqué comme étant le moyen de mise en relation du consommateur avec Okapi,  puis Kerberos est succinctement expliqué comme étant un protocole d'identification à base de clé secrète et de jeton. Kerberos étant crucial et complexe, j'ai choisi de l'expliciter dans la partie suivante de la vidéo autour d'une situation connue de tous, l'accès à une salle de cinéma. Dans un premier temps le spectateur, dans le cas concret : le consommateur, va récupérer au guichet (Okapi) son ticket. Une fois ceci fait, le spectateur doit passer devant l'ouvreur au point d'accès de la salle qui va déchirer le ticket et en garder une partie. Lors du contrôle (l'accès à Gat'ape), il est vérifié que les deux morceaux de tickets vont bien ensemble, si c'est le cas le spectateur peut accéder à sa séance (Le consommateur peut accéder à l'API). Il est ensuite précisé que le ticket à une durée bien définie, une séance dans le cas d'un ticket de cinéma, un Time To Live (durée de vie) paramétrable dans le cas de Gat'ape/Okapi. Il est ensuite mis en avant les possibilités qu'offre Gat'ape dans la mise en relation entre le consommateur et l'API, tels le contrôle d'accès, qui va permettre d'autoriser ou non l'accès à une API à certains consommateurs et le contrôle de trafic qui va permettre de réguler les flux d'accès en fonction de la demande des consommateurs et de la disponibilité de l'api. Pour représenter le contrôle d'accès j'ai choisi d'utiliser des croix rouges et des coches vertes afin de rester simple et compréhensible. J'ai choisi d'illustre le contrôle de trafic avec des feux tricolore que l'on voit changer de couleur pour symboliser le fait que ce contrôle n'est pas figé et se déroule en continu. La fonctionnalité mise en avant ensuite est la détection d'erreurs et d'anomalies qui est fournie par une autre API intégrée à Gat'ape, représentée par un moniteur qui contient une sorte d'électrocardiogramme qui grandit dangereusement à un moment, cette anomalie est ensuite entourée en rouge avec un panneau danger, qui représente la détection. Les fonctionnalité mentionnées ensuite sont un surcoût de temps de réponse quasi nul, qui n'impacte pas les performances, et une architecture tri site, qui assure  une très haute disponibilité. En effet, si l'un des trois site venait à subir une maintenance, une attaque ou être indisponible pour une autre raison, il y a deux autres sites qui pourront fournir l'authentification et garantir la sécurité aux consommateurs. J'ai ensuite choisi de faire un résumé des principales informations car la vidéo était un peu longue et assez détaillée sur certains points, et les personnes les moins techniques pourraient avoir décroché. Il est donc rappelé que Gat'ape permet à des APIs d'être exposées à des consommateurs qui pourront s'y connecter de manière sécurisée efficace, via l'apparition de deux logos rappelant ces informations. Il est ensuite indiqué via les logos respectifs qu'il existe un SDK pour permettre l'intégration facile de Gat'ape/Okapi à son application et qu'il existe un modèle d'API contenant Gat'ape/okapi prêt à l'usage pour les personnes souhaitant développer une API. Dans la dernière séquence, sont indiqués les liens vers la documentation et le mail de l'équipe en charge pour les personnes souhaitant avoir plus d'informations à ce sijet. 
 
 
 
-\section{Zbus}
+\section{Vidéo sur Zbus}
 
 \subsection{Contexte}
 
@@ -57,7 +62,7 @@ L'application qui vient se connecter possède une clé secrète. Cette clé secr
 
 
 
-\section{Valkey}
+\section{Vidép sur Valkey}
 
 \subsection{Contexte}
 
