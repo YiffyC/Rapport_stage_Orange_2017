@@ -9,7 +9,7 @@ Lorsque j'ai répondu à l'offre de stage, il été avait initialement prévu qu
     \item Valkey
 \end{itemize}
 
-Cependant, aux vues de mon avancement et de l'intérêt suscité par les vidéos produites, j'ai accepté de travailler sur trois autres projets qui sont :
+Cependant, aux vues de mon avancement et de l'intérêt suscité par les vidéos produites, j'ai accepté de travailler sur trois autres projets :
 
 \begin{itemize}
     \item Explication des difficultés liées à la création et à la publication d'APIs avant l'arrivée du cloud au sein d'Orange
@@ -25,15 +25,45 @@ Avant de développer développer le contexte et la production de chaque vidéo, 
 
 \section{Présentattion générale de l'écosystème PnS.com}
 
+PnS.com est une extension de l'ancienne solution de stockage de données à haute performance et disponibilité appelé PnS. Cette extension le rend As A Service (AAS), c'est à dire accessible via internet par le client. L'architecture de PnS.com se divise en quatre parties.
+
+\begin{itemize}
+    \item Le backend
+    \item Les injecteurs
+    \item Le backoffice
+    \item Les APIs
+\end{itemize}
+
+%%%%%%%%%%
+% Schema %
+%%%%%%%%%%
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=15cm]{images/pns/psn.png}
+  \caption{Schéma de l'architecture de PnS.com.}
+  \label{pns}
+\end{figure}
+
+
+Le backend est composé de la base de donnée Cassandra noSQL, prévue pour stocker un grand nombre de données stockées sur plusieurs serveurs différents. Elle possède donc une haute disponibilité et possède un système d'élimination de ponts défaillants qui lui assure une quasi certitude d'accès aux données. Parmi le backend figure aussi Elastic Search qui est un moteur de recherche qui va faciliter la consultation de la base de donnée, et Omnibus sert de lien entre Cassandra et Elastic Search.\\
+
+Les injecteurs quant à eux on le rôle d'envoyer en masse des informations dans la base de données.\\
+
+Le backoffice, et plus particulièrement Eris, qui est l'outil de gestion des flux. Il permet à un service de type PnS de présenter l'ensemble de ses relations avec ses fournisseurs et ses partenaires. Ses principales fonctionnalités sont de pouvoir rechercher de l'information par mot clef, mais aussi de saisir de l'information et de pouvoir suivre les flux.\\
+
+Enfin, les APIs sont présentes pour ajouter des fonctionnalités à l'écosystème PnS.com. Parmi ces APIs, nous retrouvons Batch, qui va permettre des injections, Select, qui va permettre de faire des recherches sous forme de texte comme nous le ferions dans un moteur de recherche au lieu d'utiliser les noms des variables. Skeleton, socle pour les APIs, Zbus, dont le but est de transmettre des messages \textit{(cf : 2.3)}, GyGraphe qui permet de modéliser une base de donnée sos forme de graphe et Valkey qui fournit le modèle clef/valeur \textit{(cf : 2.4)}.\\
+
+Actuellement, 185 applications se connectent à PnS quotidiennement, ce qui représente 20 000 requêtes/s en lecture et 8 000 requêtes/s en lecture sur la base de données. Ces applications viennet de milieux différents tels que le portail orange.fr, encore l'espace client ou bien encore le Suivi Conso par exemple. Ces applications viennet chercher des données, que cela soit les leurs ou bien des données provenant de référentiels, ou bien une grande capacité de stockage et une scalabilité sans impact. En effet, PnS dispose de 70TB qui permettent d'absorber les variations de volume de stockage.
 
 \section{Vidéo sur Gat'Ape/Okapi}
 
 \subsection{Contexte}
-Gat'ape/Okapi est une API faisant partie de l'écosystème PnS.com qui permet d'exposer, de s'autentifier et de sécuriser les APIs de cet écosystème. Gat'ape et Okapi ont deux fonctions bien distintes.\\
+Gat'ape/Okapi est une API faisant partie de l'écosystème PnS.com qui permet d'exposer, de s'authentifier et de sécuriser les APIs de cet écosystème. Gat'ape et Okapi ont deux fonctions bien distinctes.\\
 
-Okapi est le système d'authentification qui va permettre la connexion aux autres APIs. Okapi est basé sur le couple Oauth2/Kerberos qui va permettre une identité indépendante à chaque entité tout en offrant un sytème d'authentification unique (SSO) qui va permettre à l'utilisateur d'accéder à plusieurs applications en ne s'authentifiant qu'une seule fois. Cette authentification repose sur un système de clé secrète et de jeton. Il est à noter que des options de sécurité plus complexes sont aussi disponibles.\\
+Okapi est le système d'authentification qui va permettre la connexion aux autres APIs. Okapi est basé sur le couple Oauth2/Kerberos qui va permettre une identité indépendante à chaque entité tout en offrant un système d'authentification unique (SSO) qui va permettre à l'utilisateur d'accéder à plusieurs applications en ne s'authentifiant qu'une seule fois. Cette authentification repose sur un système de clé secrète et de jeton. Il est à noter que des options de sécurité plus complexes sont aussi disponibles.\\
 
-Gat'ape quant à elle est la passerelle qui va permettre d'exposer les APIs, c'est à dire, des les rendre visible à d'autres utilisateurs pour qu'ils puissent s'y connecter. Gat'ape va pouvoir offir un conrôle d'accès et un contrôle de traffic permettant de réguler le flux des utilisateurs. Gat'ape est également responsable  de l'authentification et de la sécutité lors de la consommation par Okapi. En plus de cela, gat'ape est également scalable, c'est à dire qu'elle va pouvoir maintenir son activité et sa performance même lors d'une forte demande.\\
+Gat'ape quant à elle est la passerelle qui va permettre d'exposer les APIs, c'est à dire, des les rendre visible à d'autres utilisateurs pour qu'ils puissent s'y connecter. Gat'ape va pouvoir offrir un contrôle d'accès et un contrôle de trafic permettant de réguler le flux des utilisateurs. Gat'ape est également responsable  de l'authentification et de la sécurité lors de la consommation par Okapi. En plus de cela, gat'ape est également scalable, c'est à dire qu'elle va pouvoir maintenir son activité et sa performance même lors d'une forte demande.\\
 
 Dans les faits la connexion grâce à Gat'ape/okapi se passe comme suit : 
 L'application qui vient se connecter possède une clé secrète. Cette clé secrète est envoyée à Okapi. Lors du traitement, Okapi va renvoyer un jeton d'authentification unique au consommateur ainsi qu'un digest. Ceci est la phase d'authentification.  Ce digest est ensuite envoyé du consommateur vers Gat'ape. Si le digest est valide, le consommateur va envoyer le jeton précédemment obtenu vers l'API à laquelle il souhaitait se connecter. L'API va à son tour vérifier le token puis le renvoyer ainsi que les informations demandées par le consommateur. Ces informations luis seront transmises via Gat'ape. Si une de ces vérifications de token échoue, le protocole recommence un envoi de token. L'opération peut ainsi être réitérée un certain nombre de fois sans avoir à se ré authentifier. Cette durée de vie (TTL) est paramétrable.
@@ -42,7 +72,7 @@ L'application qui vient se connecter possède une clé secrète. Cette clé secr
   \centering
   \includegraphics[width=15cm]{images/gao/gao1}
   \caption{Fonctionnement de Gat'Ape/Okapi.}
-  \label{fig:une-autre-image}
+  \label{gatape}
 \end{figure}
 
 
@@ -72,3 +102,5 @@ Au lancement de la vidéo, les logos de Gat'ape et Okapi arrivent depuis chaque 
 %%% mode: latex
 %%% TeX-master: "isae-report-template"
 %%% End: 
+
+%%% 
