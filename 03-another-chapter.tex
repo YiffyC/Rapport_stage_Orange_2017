@@ -17,13 +17,45 @@ Cependant, aux vues de mon avancement et de l'intérêt suscité par les vidéos
     \item Promotion de PnS.com
 \end{itemize}
 
+
+
 Les vidéos traitant des APIs se devaient d'être vulgarisées et simple à comprendre étant donné qu'elles pourraient être destinés à un public très vaste. Chaque vidéo se doit d'être compréhensible par un programmeur, un manager ou un commercial par exemple. La principale difficulté est de devoir vulgariser un maximum tout en gardant un maximum de précision pour qu'elles restent pertinentes pour les personnes les plus techniques. La diffusion de ces vidéos peut se faire pour montrer les dernières avancées au sein de la SDFY, ou encore pour promouvoir un produit, ou le proposer à des clients en tant que nouvelle solution. \\
 
 En revanche, l'approche pour les 3 autres vidéos est totalement différente, elles s'adressent à un public ciblé et ont principalement un but promotionnel. Deux de ces vidéos ont été réalisées pour un événement particulier. \\
 
-Avant de développer développer le contexte et la production de chaque vidéo, je vais d'abord présenter le programme PnS.com et ses différents composants. 
 
-\section{Présentattion générale de l'écosystème PnS.com}
+
+\section{Style de vidéo et choix du logiciel}
+Comme précisé dans l'introduction, mon stage est la suite d'un projet de série de vidéos ayant été commencées par un prestataire externe. La première vidéo avait été faite en scribing, sorte de présentation sur tableau blanc animé avec une main tenant un crayon qui va dessiner les éléments. J'ai volontairement choisi de ne pas réutiliser ce style car il peut s'avérer très répétitif et ennuyeux sur le long terme.
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=15cm]{images/scribe}
+  \caption{Exemple d'une vidéo de type scribing.}
+  \label{scribe}
+\end{figure}
+
+J'ai opté pour un thème moderne et minimaliste pour que les spectateurs ne se perdent pas dans les détails. Un fond blanc ou gris clair et les illustrations trouvées sur le site de la marque. De cette manière j'étais sûr de respecter les conditions de la charte graphique, à savoir, au mois 20\% de couleur orange sur les illustrations ainsi que les couleurs et la police officielle. J'ai du cependant détourer certaines images, en créer certaines tels les enveloppes visibles dans la légende \textbf{AJOUTER LE NUMERO DE LA LEGENDE}. En ce qui concerne le logiciel, je me suis servi de Adobe After Effects CC, logiciel que j'avais déjà expérimenté à titre personnel et dont j'ai reçu une formation lors d'un de mes cours du premier semestre. After Effects CC est un logiciel très complet qui permet d'animer des objets de manière précise en ayant la main mise sur tous les paramètres, ce qui permet une création quasiment sans restriction dans un environnement dans lequel j'avais déjà des repères.
+
+\section{Organisation}
+Le processus de création de chaque vidéo est découpé en plusieurs phases qui ont toujours lieu dans cet ordre :\\
+
+Si la vidéo était un projet prévu à l'avance, ce qui était le cas pour les trois vidéos traitant les APIs, je commençais par lire de la documentation pour me renseigner sur ce que propose le produit et son utilité.\\
+
+Avait ensuite lieu une réunion avec le chef de projet du sujet de la vidéo ainsi que une ou deux autres personnes également concernées (programmeur, graphiste). Lors de cette réunion, je cherchais à comprendre les poins important à développer dans la vidéo ainsi que messages à faire passer. Si besoin, je demandais également des précisions sur le produit. Une fois les idées et les messages principaux réunis, nous faisons ensemble le tri pour ne garder que les idées les plus pertinantes pour le public ciblé.\\
+
+Lorsque le choix est définitif et approuvé par tout le monde, je travaille sur un storyboard et un script qui permettrons de se rendre compte de la mise en page et du texte énoncé. \textbf{PHOTO STORYBOARD} Une fois ces deux éléments achevés, je les envoie aux personnes présentes lors de la réunion pour avoir leur retour et impressions. S'il y avait des modifications majeures qui nécessitait une nouvelle phase de vérification, je renvoyais de nouveau le storyboard et le script.\\
+
+
+Une fois le script validé, je pouvais commencer la création de la vidéo en animant les éléments prévus au storybaord pour garder un ensemble dynamique. J'ai un maximum mis en mouvement les éléments importants sans trop animer la totalité pour que le spectateur puisse se concentrer sur la future voix off. Une fois les animations terminées, j'enregistre la voix off en lisant le script préalablkement écrit puis je la synchronise avec les animations. Pour finir, j'ajoute une musique de fond, pour combler les blancs de manière conviviale.\\
+
+Une fois ceci fait j'envoie ce pilote aux personnes concernées en attendant leurs remarques éventuelles. S'il y a besoin de modifier des parties, je le fais puis leur renvoie la nouvelle version jusqu'à validation de la vidéo.
+
+
+%Avant de développer développer le contexte et la production de chaque vidéo, je vais d'abord présenter le programme PnS.com et ses différents composants. 
+
+\section{Présentation générale de l'écosystème PnS.com}
+
 
 PnS.com est une extension de l'ancienne solution de stockage de données à haute performance et disponibilité appelé PnS. Cette extension le rend As A Service (AAS), c'est à dire accessible via internet par le client. L'architecture de PnS.com se divise en quatre parties.
 
@@ -65,9 +97,6 @@ Okapi est le système d'authentification qui va permettre la connexion aux autre
 
 Gat'ape quant à elle est la passerelle qui va permettre d'exposer les APIs, c'est à dire, des les rendre visible à d'autres utilisateurs pour qu'ils puissent s'y connecter. Gat'ape va pouvoir offrir un contrôle d'accès et un contrôle de trafic permettant de réguler le flux des utilisateurs. Gat'ape est également responsable  de l'authentification et de la sécurité lors de la consommation par Okapi. En plus de cela, gat'ape est également scalable, c'est à dire qu'elle va pouvoir maintenir son activité et sa performance même lors d'une forte demande.\\
 
-Dans les faits la connexion grâce à Gat'ape/okapi se passe comme suit : 
-L'application qui vient se connecter possède une clé secrète. Cette clé secrète est envoyée à Okapi. Lors du traitement, Okapi va renvoyer un jeton d'authentification unique au consommateur ainsi qu'un digest. Ceci est la phase d'authentification.  Ce digest est ensuite envoyé du consommateur vers Gat'ape. Si le digest est valide, le consommateur va envoyer le jeton précédemment obtenu vers l'API à laquelle il souhaitait se connecter. L'API va à son tour vérifier le token puis le renvoyer ainsi que les informations demandées par le consommateur. Ces informations luis seront transmises via Gat'ape. Si une de ces vérifications de token échoue, le protocole recommence un envoi de token. L'opération peut ainsi être réitérée un certain nombre de fois sans avoir à se ré authentifier. Cette durée de vie (TTL) est paramétrable.
-
 \begin{figure}[htp]
   \centering
   \includegraphics[width=15cm]{images/gao/gao1}
@@ -76,11 +105,32 @@ L'application qui vient se connecter possède une clé secrète. Cette clé secr
 \end{figure}
 
 
+Dans les faits la connexion grâce à Gat'ape/okapi se passe comme suit : 
+L'application qui vient se connecter possède une clé secrète. Cette clé secrète est envoyée à Okapi. Lors du traitement, Okapi va renvoyer un jeton d'authentification unique au consommateur ainsi qu'un digest. Ceci est la phase d'authentification.  Ce digest est ensuite envoyé du consommateur vers Gat'ape. Si le digest est valide, le consommateur va envoyer le jeton précédemment obtenu vers l'API à laquelle il souhaitait se connecter. L'API va à son tour vérifier le token puis le renvoyer ainsi que les informations demandées par le consommateur. Ces informations luis seront transmises via Gat'ape. Si une de ces vérifications de token échoue, le protocole recommence un envoi de token. L'opération peut ainsi être réitérée un certain nombre de fois sans avoir à se ré authentifier. Cette durée de vie (TTL) est paramétrable.
+
+
+
 
 \subsection{Production}
-Avant de commencer la production à proprement parlé j'ai tout d'abord du lire la documentation relative à cette API pour en comprendre l'utilité et le fonctionnement. Une fois que la fonction et le fonctionnement de cette API m'était plus clair, j'ai pris rendez vous avec le responsable solution de cette API. Nous avons fait une réunion dans laquelle je lui ai demandé les points qu'il voulait mettre en avant grâce à la vidéo et les principales innovations qu'apportait Gat'ape/okapi par rapport à l'ancienne solution. Une fois d'accord sur les points à aborder je me suis mis à produire un script, et un storyboard qui sont respectivement le texte de la vidéo et les images et animations clefs de celle ci. Une fois le script et le storyboard finalisé, j'ai de nouveau rencontré le responsable de Gat'ape/Okapi pour les lui proposer. Une fois ces documents validés, j'ai pu me lancer dans la production à proprement parler. J'ai choisi de créer un thème sobre et direct pour que les spectateurs ne se perdent pas dans les détails. Un fond blanc et les illustrations trouvées sur le site de la marque. De cette manière j'étais sûr de respecter les conditions de la charte graphique, à savoir, au mois 20\% de couleur orange sur les illustrations ainsi que les couleurs et la police officielle.\\
+Avant de commencer la production à proprement parlé j'ai tout d'abord du lire la documentation relative à cette API pour en comprendre l'utilité et le fonctionnement. Une fois que la fonction et le fonctionnement de cette API m'était plus clair, j'ai pris rendez vous avec le responsable solution de cette API. Nous avons fait une réunion dans laquelle je lui ai demandé les points qu'il voulait mettre en avant grâce à la vidéo et les principales innovations qu'apportait Gat'ape/okapi par rapport à l'ancienne solution. Une fois d'accord sur les points à aborder je me suis mis à produire un script, et un storyboard qui sont respectivement le texte de la vidéo et les images et animations clefs de celle ci. Une fois le script et le storyboard finalisé, j'ai de nouveau rencontré le responsable de Gat'ape/Okapi pour les lui proposer. Une fois ces documents validés, j'ai pu me lancer dans la production à proprement parler. \\
 
-Au lancement de la vidéo, les logos de Gat'ape et Okapi arrivent depuis chaque côté de l'écran, présentant ainsi les deux APIs. La partie suivante de la vidéo explique brièvement la fonction générale de Gat'ape/Okapi. Les APIs exposés au travers de Gat'ape apparaissent en premier, pour symboliser le fait qu'elles sont déjà présentes et visibles, puis les consommateurs font leur apparition et ces derniers sont reliés aux APIs via des flèches en passant par le duo Gat'ape/Okapi. Vient ensuite l'explication de l'identification. Le nom du protocole d'authentification, Okapi, apparaît et est décomposé pour expliquer son acronyme. Dans un premier temps le protocole Oauth2 est expliqué comme étant le moyen de mise en relation du consommateur avec Okapi,  puis Kerberos est succinctement expliqué comme étant un protocole d'identification à base de clé secrète et de jeton. Kerberos étant crucial et complexe, j'ai choisi de l'expliciter dans la partie suivante de la vidéo autour d'une situation connue de tous, l'accès à une salle de cinéma. Dans un premier temps le spectateur, dans le cas concret : le consommateur, va récupérer au guichet (Okapi) son ticket. Une fois ceci fait, le spectateur doit passer devant l'ouvreur au point d'accès de la salle qui va déchirer le ticket et en garder une partie. Lors du contrôle (l'accès à Gat'ape), il est vérifié que les deux morceaux de tickets vont bien ensemble, si c'est le cas le spectateur peut accéder à sa séance (Le consommateur peut accéder à l'API). Il est ensuite précisé que le ticket à une durée bien définie, une séance dans le cas d'un ticket de cinéma, un Time To Live (durée de vie) paramétrable dans le cas de Gat'ape/Okapi. Il est ensuite mis en avant les possibilités qu'offre Gat'ape dans la mise en relation entre le consommateur et l'API, tels le contrôle d'accès, qui va permettre d'autoriser ou non l'accès à une API à certains consommateurs et le contrôle de trafic qui va permettre de réguler les flux d'accès en fonction de la demande des consommateurs et de la disponibilité de l'api. Pour représenter le contrôle d'accès j'ai choisi d'utiliser des croix rouges et des coches vertes afin de rester simple et compréhensible. J'ai choisi d'illustre le contrôle de trafic avec des feux tricolore que l'on voit changer de couleur pour symboliser le fait que ce contrôle n'est pas figé et se déroule en continu. La fonctionnalité mise en avant ensuite est la détection d'erreurs et d'anomalies qui est fournie par une autre API intégrée à Gat'ape, représentée par un moniteur qui contient une sorte d'électrocardiogramme qui grandit dangereusement à un moment, cette anomalie est ensuite entourée en rouge avec un panneau danger, qui représente la détection. Les fonctionnalité mentionnées ensuite sont un surcoût de temps de réponse quasi nul, qui n'impacte pas les performances, et une architecture tri site, qui assure  une très haute disponibilité. En effet, si l'un des trois site venait à subir une maintenance, une attaque ou être indisponible pour une autre raison, il y a deux autres sites qui pourront fournir l'authentification et garantir la sécurité aux consommateurs. J'ai ensuite choisi de faire un résumé des principales informations car la vidéo était un peu longue et assez détaillée sur certains points, et les personnes les moins techniques pourraient avoir décroché. Il est donc rappelé que Gat'ape permet à des APIs d'être exposées à des consommateurs qui pourront s'y connecter de manière sécurisée efficace, via l'apparition de deux logos rappelant ces informations. Il est ensuite indiqué via les logos respectifs qu'il existe un SDK pour permettre l'intégration facile de Gat'ape/Okapi à son application et qu'il existe un modèle d'API contenant Gat'ape/okapi prêt à l'usage pour les personnes souhaitant développer une API. Dans la dernière séquence, sont indiqués les liens vers la documentation et le mail de l'équipe en charge pour les personnes souhaitant avoir plus d'informations à ce sijet. 
+Au lancement de la vidéo, les logos de Gat'ape et Okapi arrivent depuis chaque côté de l'écran, présentant ainsi les deux APIs. La partie suivante de la vidéo explique brièvement la fonction générale de Gat'ape/Okapi. Les APIs exposés au travers de Gat'ape apparaissent en premier, pour symboliser le fait qu'elles sont déjà présentes et visibles, puis les consommateurs font leur apparition et ces derniers sont reliés aux APIs via des flèches en passant par le duo Gat'ape/Okapi.\\
+
+Vient ensuite l'explication de l'identification. Le nom du protocole d'authentification, Okapi, apparaît et est décomposé pour expliquer son acronyme. Dans un premier temps le protocole Oauth2 est expliqué comme étant le moyen de mise en relation du consommateur avec Okapi,  puis Kerberos est succinctement expliqué comme étant un protocole d'identification à base de clé secrète et de jeton. Kerberos étant crucial et complexe, j'ai choisi de l'expliciter dans la partie suivante de la vidéo autour d'une situation connue de tous, l'accès à une salle de cinéma.\\
+
+Dans un premier temps le spectateur, dans le cas concret : le consommateur, va récupérer au guichet (Okapi) son ticket. Une fois ceci fait, le spectateur doit passer devant l'ouvreur au point d'accès de la salle qui va déchirer le ticket et en garder une partie. Lors du contrôle (l'accès à Gat'ape), il est vérifié que les deux morceaux de tickets vont bien ensemble, si c'est le cas le spectateur peut accéder à sa séance (Le consommateur peut accéder à l'API). Il est ensuite précisé que le ticket à une durée bien définie, une séance dans le cas d'un ticket de cinéma, un Time To Live (durée de vie) paramétrable dans le cas de Gat'ape/Okapi.\\
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=15cm]{images/gao/screenGao}
+  \caption{Explication de Kerberos.}
+  \label{screengatape}
+\end{figure}
+
+Il est ensuite mis en avant les possibilités qu'offre Gat'ape dans la mise en relation entre le consommateur et l'API, tels le contrôle d'accès, qui va permettre d'autoriser ou non l'accès à une API à certains consommateurs et le contrôle de trafic qui va permettre de réguler les flux d'accès en fonction de la demande des consommateurs et de la disponibilité de l'api. Pour représenter le contrôle d'accès j'ai choisi d'utiliser des croix rouges et des coches vertes afin de rester simple et compréhensible. J'ai choisi d'illustre le contrôle de trafic avec des feux tricolore que l'on voit changer de couleur pour symboliser le fait que ce contrôle n'est pas figé et se déroule en continu. La fonctionnalité mise en avant ensuite est la détection d'erreurs et d'anomalies qui est fournie par une autre API intégrée à Gat'ape, représentée par un moniteur qui contient une sorte d'électrocardiogramme qui grandit dangereusement à un moment, cette anomalie est ensuite entourée en rouge avec un panneau danger, qui représente la détection.\\
+Les fonctionnalité mentionnées ensuite sont un surcoût de temps de réponse quasi nul, qui n'impacte pas les performances, et une architecture tri site, qui assure  une très haute disponibilité. En effet, si l'un des trois site venait à subir une maintenance, une attaque ou être indisponible pour une autre raison, il y a deux autres sites qui pourront fournir l'authentification et garantir la sécurité aux consommateurs.\\
+
+J'ai ensuite choisi de faire un résumé des principales informations car la vidéo était un peu longue et assez détaillée sur certains points, et les personnes les moins techniques pourraient avoir décroché. Il est donc rappelé que Gat'ape permet à des APIs d'être exposées à des consommateurs qui pourront s'y connecter de manière sécurisée efficace, via l'apparition de deux logos rappelant ces informations. Il est ensuite indiqué via les logos respectifs qu'il existe un SDK pour permettre l'intégration facile de Gat'ape/Okapi à son application et qu'il existe un modèle d'API contenant Gat'ape/okapi prêt à l'usage pour les personnes souhaitant développer une API. Dans la dernière séquence, sont indiqués les liens vers la documentation et le mail de l'équipe en charge pour les personnes souhaitant avoir plus d'informations à ce sijet. 
 
 
 
@@ -89,6 +139,12 @@ Au lancement de la vidéo, les logos de Gat'ape et Okapi arrivent depuis chaque 
 \subsection{Contexte}
 
 \subsection{Production}
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=15cm]{images/zbus/screensbus.png}
+  \caption{Les files d'attentes dans Zbus.}
+  \label{screenzbus}
+\end{figure}
 
 
 
@@ -97,6 +153,8 @@ Au lancement de la vidéo, les logos de Gat'ape et Okapi arrivent depuis chaque 
 \subsection{Contexte}
 
 \subsection{Production}
+
+
 
 %%% Local Variables: 
 %%% mode: latex
