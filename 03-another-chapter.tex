@@ -131,7 +131,7 @@ L'application qui vient se connecter possède une clé secrète. Cette clé secr
 \subsection{Production}
 Avant de commencer la production à proprement parlé j'ai tout d'abord du lire la documentation relative à cette API pour en comprendre l'utilité et le fonctionnement. Une fois que la fonction et le fonctionnement de cette API m'était plus clair, j'ai pris rendez vous avec le responsable solution de cette API. Nous avons fait une réunion dans laquelle je lui ai demandé les points qu'il voulait mettre en avant grâce à la vidéo et les principales innovations qu'apportait Gat'ape/okapi par rapport à l'ancienne solution. Une fois d'accord sur les points à aborder je me suis mis à produire un script, et un storyboard qui sont respectivement le texte de la vidéo et les images et animations clefs de celle ci. Une fois le script et le storyboard finalisé, j'ai de nouveau rencontré le responsable de Gat'ape/Okapi pour les lui proposer. Une fois ces documents validés, j'ai pu me lancer dans la production à proprement parler. \\
 
-Au lancement de la vidéo, les logos de Gat'ape et Okapi arrivent depuis chaque côté de l'écran, présentant ainsi les deux APIs. La partie suivante de la vidéo explique brièvement la fonction générale de Gat'ape/Okapi. Pour cette première partie j'ai voulu expliquer siplement et en quelques secondes à quoi servait Gat'ape/Okapi.  Les APIs exposés au travers de Gat'ape apparaissent en premier, pour symboliser le fait qu'elles sont déjà présentes et visibles, puis les consommateurs font leur apparition et ces derniers sont reliés aux APIs via des flèches en passant par le duo Gat'ape/Okapi.\\
+Au lancement de la vidéo, les logos de Gat'ape et Okapi arrivent depuis chaque côté de l'écran, présentant ainsi les deux APIs. La partie suivante de la vidéo explique brièvement la fonction générale de Gat'ape/Okapi. Pour cette première partie j'ai voulu expliquer simplement et en quelques secondes à quoi servait Gat'ape/Okapi.  Les APIs exposés au travers de Gat'ape apparaissent en premier, pour symboliser le fait qu'elles sont déjà présentes et visibles, puis les consommateurs font leur apparition et ces derniers sont reliés aux APIs via des flèches en passant par le duo Gat'ape/Okapi.\\
 
 Vient ensuite l'explication de l'identification. Le nom du protocole d'authentification, Okapi, apparaît et est décomposé pour expliquer son acronyme. Dans un premier temps le protocole Oauth2 est expliqué comme étant le moyen de mise en relation du consommateur avec Okapi,  puis Kerberos est succinctement expliqué comme étant un protocole d'identification à base de clé secrète et de jeton. Kerberos étant crucial et complexe, j'ai choisi de l'expliciter dans la partie suivante de la vidéo autour d'une situation connue de tous, l'accès à une salle de cinéma.\\
 
@@ -155,10 +155,14 @@ La dernière section de la vidéo n'était pas prévue dans le storyboard d'orig
 \section{Vidéo sur Zbus}
 
 \subsection{Contexte}
-Zbus est une API permettant le transfert de messages au fil de l'eau entre les applications du SI. Zbus à pour but de faciliter et standardiser l'alimentation de Push@voo, qui est la plate forme permettant d'envoyer les notifications,  comme par exemple le nombre de mails non lus. L'API Zbus fonctionne sur un modèle de publish/subscribe : les messages sont classés par catégorie auxquelles s'abonnent les récepteurs. Les messages sont donc en attente active ou "polling" et ne sont délivrés qu'une seule fois. Chaque récepteur à sa propre file d'attente qui sera donc remplie avec les messages dont les catégories l'intéresse. 
+Zbus est une API permettant le transfert de messages au fil de l'eau entre les applications du SI. Zbus à pour but de faciliter et standardiser l'alimentation de Push@voo, qui est la plate forme permettant d'envoyer les notifications,  comme par exemple le nombre de mails non lus. L'API Zbus fonctionne sur un modèle de publish/subscribe : les messages sont classés par catégorie auxquelles s'abonnent les récepteurs. Les messages sont donc en attente active ou "polling" et ne sont délivrés qu'une seule fois. Chaque récepteur à sa propre file d'attente qui sera donc remplie avec les messages dont les catégories l'intéresse dans l'ordre d'arrivée.  
 
 
 \subsection{Production}
+
+Une fois d'accord sur le storyboard avec le responsable de l'API, j'ai commené la réalisation. Comme pour la vidéo précédente, l'ouverture se fait avec le logo de l'Zbus qui arrive à l'écran puis disparaît. Lors de la séquence suivante, la fonction de l'API est résumée très brièvement en tant que la composante qui permet l'envoi de notification, ce qui est, entre autre, une de ses fonctions. J'ai choisi cette facette de Zbus car elle est très facilement compréhensible et visualisable. L'animation par dessus la voix off est donc une enveloppe qui arrive et une notification ronde qui apparaît pour signifier qu'un nouveau message est arrivé.\\
+
+Vient ensuite les explications sur le fonctionnement de l'API. Pour symboliser le fait que les récepteurs s'abonnent au fil de messages, ils sont reliés par un trait à l'émetteur en forme de nuage. On voit ensuite à quelles catégories de messages chaque récepteur c'est abonné sur son écran. Ici pour des raisons de simplicité, les catégories de messages sont représentés par trois couleurs : bleu, rouge et vert. Un des récepteurs est abonné aux trois catégories de messages, un autre à seulement deux catégories et le troisième n'est abonné qu'à la catégorie bleue. Ensuite, la file d'attente de chaque récepteur apparaît à côté de lui et l'émetteur commence à envoyer des messages. 
 
 
 \begin{figure}[htp]
@@ -169,6 +173,14 @@ Zbus est une API permettant le transfert de messages au fil de l'eau entre les a
 \end{figure}
 
 
+Un message est émis une seule fois puis sera intercepté par les récepteurs abonnés à cette catégorie puis stocké dans leur file d'attente en attendant d'être traité. A la fin de cette séquence, chaque récepteur a bien dans sa file des messages correspondant à ce dont ils s'étaient abonnés.\\
+
+La séquence suivante évoque les types de fihiers qui peuvent être échangés via Zbbus. L'animation correspond tout simplement au changement de mot au moment de la parole.\\
+
+Puis vient une animation expliquant les avantages de Zbus qui sont sa facilité d'utilisation et sa sécurité. Les logos décendent depuis un trait situé entre une fenêtre d'application et le logo de Zbbus. Ce logo va ensuite se décaler et cohaiter à l'écran avec le logo de Push@voo. Une enveloppe va circuler de Zbus vers Push@voo puis des notifications rondes vont ensuite apparaître, expliquant une nouvelle fois que Zbus fonctionne de pair avec Push@voo pour permettre l'envoi de notifications.\\
+
+Enfin, nous retrouvons une séquence classique qui contient les liens intranets vers la documentation et le mail de l'équipe de Zbus.
+
 
 \section{Vidép sur Valkey}
 
@@ -178,9 +190,51 @@ Zbus est une API permettant le transfert de messages au fil de l'eau entre les a
 
 
 
+
+\section{Le cloud chez Orange (Comité de direction)}
+\subsection{Contexte}
+Le 12 juin 2016, Koen Vermeulen, CIO d'Orange ainsi que son comité de direction sont venus sur le site de Sophia-Antioplis dans le but de voir les avancements du cloud et de comment celui ci pouvait impacter la totalité d'Orange et pas seulement les développeurs axés sur les nouvelles technologies comme c'est la cas à la DFY. Un créneau de démonstration à donc été réservé pour une équipe qui devait montrer les différentes étapes avant et après l'arrivée du cloud pour un développeur qui souhaite créer une application se connectant à la base de donnée.\\
+
+J'ai donc été missionné pour la première partie de cette intervention en ayant pour but de "produire une vidéo de moins de 3 minutes expliquant le côté laborieux pour un développeur de déployer une application depuis avec les étapes de demande de machines, flux, connexion au backend".\\
+
+Cette vidéo fut suivi d'une démonstration d'un déploiement d'une API en obtenant automatiquement les identifiants de connection.
+
+\subsection{Réalisation}
+Avant de réaliser le storyboard, j'ai du rencontrer les deux développeurs qui s'occupaient de la démonstration qui se passait juste après ma vidéo dans le but de savoir sur quels point je devais appuyer afin que leur démonstration fasse bien contraste avec la situation précédente. Les points qui sont ressortis sont
+
+\begin{itemize}
+    \item Le temps à attendre avant la mise en service
+    \item Les formulaires à remplir manuellement qui transitaient de main en main
+    \item La nécessité de passer par des services externes
+\end{itemize}
+
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=15cm]{images/cd/cd.png}
+  \caption{Les étapes de l'installationavant la mise en place du cloud.}
+  \label{comite}
+\end{figure}
+
+
+
+\section{Présentation de PnS.com (Comité d'investissement)}
+\subsection{Contexte}
+
+\subsection{Réalisation}
+
+
+\section{Présentation du devops}
+\subsection{Contexte}
+
+\subsection{Réalisation}
+
+
+\section{Newsletter}
+
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "isae-report-template"
 %%% End: 
 
-%%% 
+%%% .warn @Kyuu ��#2146  fais gaffe à ton langage quand même
