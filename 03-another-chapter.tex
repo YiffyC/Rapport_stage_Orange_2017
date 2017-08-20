@@ -141,7 +141,7 @@ L'application qui vient se connecter possède une clé secrète. Cette clé secr
 
 
 
-\subsection{Production}
+\subsection{Réalisation}
 Avant de commencer la production à proprement parlé j'ai tout d'abord du lire la documentation relative à cette API pour en comprendre l'utilité et le fonctionnement. Une fois que la fonction et le fonctionnement de cette API m'était plus clair, j'ai pris rendez vous avec le responsable solution de cette API. Nous avons fait une réunion dans laquelle je lui ai demandé les points qu'il voulait mettre en avant grâce à la vidéo et les principales innovations qu'apportait Gat'ape/okapi par rapport à l'ancienne solution. Une fois d'accord sur les points à aborder je me suis mis à produire un script, et un storyboard qui sont respectivement le texte de la vidéo et les images et animations clefs de celle ci. Une fois le script et le storyboard finalisé, j'ai de nouveau rencontré le responsable de Gat'ape/Okapi pour les lui proposer. Une fois ces documents validés, j'ai pu me lancer dans la production à proprement parler. \\
 
 Au lancement de la vidéo, les logos de Gat'ape et Okapi arrivent depuis chaque côté de l'écran, présentant ainsi les deux APIs. La partie suivante de la vidéo explique brièvement la fonction générale de Gat'ape/Okapi. Pour cette première partie j'ai voulu expliquer simplement et en quelques secondes à quoi servait Gat'ape/Okapi.  Les APIs exposés au travers de Gat'ape apparaissent en premier, pour symboliser le fait qu'elles sont déjà présentes et visibles, puis les consommateurs font leur apparition et ces derniers sont reliés aux APIs via des flèches en passant par le duo Gat'ape/Okapi.\\
@@ -171,7 +171,7 @@ La dernière section de la vidéo n'était pas prévue dans le storyboard d'orig
 Zbus est une API permettant le transfert de messages au fil de l'eau entre les applications du SI. Zbus à pour but de faciliter et standardiser l'alimentation de Push@voo, qui est la plate forme permettant d'envoyer les notifications,  comme par exemple le nombre de mails non lus. L'API Zbus fonctionne sur un modèle de publish/subscribe : les messages sont classés par catégorie auxquelles s'abonnent les récepteurs. Les messages sont donc en attente active ou "polling" et ne sont délivrés qu'une seule fois. Chaque récepteur à sa propre file d'attente qui sera donc remplie avec les messages dont les catégories l'intéresse dans l'ordre d'arrivée.  
 
 
-\subsection{Production}
+\subsection{Réalisation}
 
 Une fois d'accord sur le storyboard avec le responsable de l'API, j'ai commené la réalisation. Comme pour la vidéo précédente, l'ouverture se fait avec le logo de l'Zbus qui arrive à l'écran puis disparaît. Lors de la séquence suivante, la fonction de l'API est résumée très brièvement en tant que la composante qui permet l'envoi de notification, ce qui est, entre autre, une de ses fonctions. J'ai choisi cette facette de Zbus car elle est très facilement compréhensible et visualisable. L'animation par dessus la voix off est donc une enveloppe qui arrive et une notification ronde qui apparaît pour signifier qu'un nouveau message est arrivé.\\
 
@@ -188,19 +188,19 @@ Vient ensuite les explications sur le fonctionnement de l'API. Pour symboliser l
 
 Un message est émis une seule fois puis sera intercepté par les récepteurs abonnés à cette catégorie puis stocké dans leur file d'attente en attendant d'être traité. A la fin de cette séquence, chaque récepteur a bien dans sa file des messages correspondant à ce dont ils s'étaient abonnés.\\
 
-La séquence suivante évoque les types de fihiers qui peuvent être échangés via Zbbus. L'animation correspond tout simplement au changement de mot au moment de la parole.\\
+La séquence suivante évoque les types de fihiers qui peuvent être échangés via Zbus. L'animation correspond tout simplement au changement de mot au moment de la parole.\\
 
-Puis vient une animation expliquant les avantages de Zbus qui sont sa facilité d'utilisation et sa sécurité. Les logos décendent depuis un trait situé entre une fenêtre d'application et le logo de Zbbus. Ce logo va ensuite se décaler et cohaiter à l'écran avec le logo de Push@voo. Une enveloppe va circuler de Zbus vers Push@voo puis des notifications rondes vont ensuite apparaître, expliquant une nouvelle fois que Zbus fonctionne de pair avec Push@voo pour permettre l'envoi de notifications.\\
+Puis vient une animation expliquant les avantages de Zbus qui sont sa facilité d'utilisation et sa sécurité. Les logos décendent depuis un trait situé entre une fenêtre d'application et le logo de Zbus. Ce logo va ensuite se décaler et cohaiter à l'écran avec le logo de Push@voo. Une enveloppe va circuler de Zbus vers Push@voo puis des notifications rondes vont ensuite apparaître, expliquant une nouvelle fois que Zbus fonctionne de pair avec Push@voo pour permettre l'envoi de notifications.\\
 
 Enfin, nous retrouvons une séquence classique qui contient les liens intranets vers la documentation et le mail de l'équipe de Zbus.
 
 
-\section{Vidép sur Valkey}
+\section{Vidéo sur Valkey}
 
 \subsection{Contexte}
 
 
-\subsection{Production}
+\subsection{Réalisation}
 
 
 
@@ -237,6 +237,13 @@ Cette fin permet à l'équipe de démonstration de pouvoir enchaîner et de fair
 
 \section{Présentation de PnS.com (Comité d'investissement)}
 \subsection{Contexte}
+Peu après mon départ, la DFY passera devant un comité d'investissement dans le but de récolter de l'argent pour financer PnS.com. Lors de cette présentation, la dirrection souhaitait ajouter une note plus ludique et changeante que les habituels diaporamas et ont donc demandé une vidéo pour rappeler les innovations et promesses de PnS.com. Cette vidéo se doit donc d'être assez courte et concise. Les points importants à aborder étaient : 
+\begin{itemize}
+\item Le stockage des données
+\item Les promesses de performance
+\end{itemize}
+
+
 
 \subsection{Réalisation}
 
@@ -246,14 +253,15 @@ Cette fin permet à l'équipe de démonstration de pouvoir enchaîner et de fair
 
 \subsection{Contexte}
 
-Après avoir visionné ma vidéo sur Gat'ape/Okai, une personne est venue me proposer de réaliser un projet à propos du DevOps,qui correspond au mélange des tâches qu'effectuent les équipes d'une entreprise chargées du développement des applications (Dev) et de l'exploitation des systèmes (Ops). Cette personne avait réalisé un an plus tot une présentation dans laquelle elle expliquait le développement du DevOps au sein d'Orange et en quoi celui-ci était bénéfique. Elle rencontrait cependant un problème, le support de cette présentation était un un fichier dans lequel les information étaient résumées de façon succinte et était  dans la majeure partie des cas insufisante pour pouvoir comprendre l'essentiel du propos. la conférence avait cependant été filmée, mais l'intervention durait une vingtaine de minutes, ce qui demande une longue période d'attention. L'enjeu de ce projet était de produire une vidéo qui se suffirait à elle même , assez courte et suffisamment précise pour reprendre les points de la présentation.
+Après avoir visionné ma vidéo sur Gat'ape/Okai, une personne est venue me proposer de réaliser un projet à propos du DevOps,qui correspond au mélange des tâches qu'effectuent les équipes d'une entreprise chargées du développement des applications (Dev) et de l'exploitation des systèmes (Ops). Cette personne avait réalisé un an plus tot une présentation dans laquelle elle expliquait le développement du DevOps au sein d'Orange et en quoi celui-ci était bénéfique. Elle rencontrait cependant un problème, le support de cette présentation était un un fichier dans lequel les information étaient résumées de façon succinte et était  dans la majeure partie des cas insuffisante pour pouvoir comprendre l'essentiel du propos. la conférence avait cependant été filmée, mais l'intervention durait une vingtaine de minutes, ce qui demande une longue période d'attention. L'enjeu de ce projet était de produire une vidéo qui se suffirait à elle même , assez courte et suffisamment précise pour reprendre les points de la présentation.
 
 
 \subsection{Réalisation}
 La principale différence avec cette réalisation c'est que le storyboard était déjà défini, il suffisait de reprendre les étapes décrites lors de la présentation. Il m'a aussi été demandé de réutiliser les images du précédent support. Celles ci ayant été créé spécifiquement par un graphiste. Notre première réunion était donc composée de la personne ayant réalisé la présentation et effectuée la demande de vidéo et du graphiste. Ce dernier m'a fournit les éléments graphiques utilisés dans la présentation ainsi que certains modèles sous format vectoriel dont j'avais déjà entrevu des modifications à apporter.\\
 
-J'ai ensuite eu une réunion avec la personne de la présentation pour travailler le texte de la voix off, car elle m'avait préalablement envoyé un prototype de texte qui durait environ sept minutes à la lecture, ce qui était bien trop long. Nous avons donc extrait ensemble les messages importants à véhiculer et nous avons dû éliminer beaucoup de petits détails tels que des chiffres qui n'apportaient pas directement des informations liés au DevOps.
+J'ai ensuite eu une réunion avec la personne de la présentation pour travailler le texte de la voix off, car elle m'avait préalablement envoyé un prototype de texte qui durait environ sept minutes à la lecture, ce qui était bien trop long. Nous avons donc extrait ensemble les messages importants à véhiculer et nous avons dû éliminer beaucoup de petits détails tels que des chiffres qui n'apportaient pas directement des informations liés au DevOps. Garder uniquement les information concrètes fut la partie la plus complexe de la pré-production. Nous avons fini par garder environ 5 minutes de texte essentiel sur les 30 minutes de la présentation.\\
 
+Une fois cette phase terminée, la voix a été enregistrée par la personne en anglais et en français puis m'a été transmise. Disposant donc des illustrations, de la voix et de la présentation, il ne me restait plus qu'a retranscrire cette dernière sous forme d'une vidéo dynamique. Il ne me restait plus qu'à faire les animations. Pour réaliser la pluspart de  celles ci, j'ai du découper les images fornies pour povoir les animer partie par partie afin de créer des effets d'apparition au fur et à mesure de la progressoin du texte. 
 
 
 \section{Newsletter}
